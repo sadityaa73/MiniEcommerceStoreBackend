@@ -34,15 +34,12 @@ product.get("/product/:category", async(request, response) => {
 });
 //post request
 product.post("/product", async(request, response) => {
-    console.log("printing request body", request.body);
-    console.log("printing request files", request.files.image);
-    let file = request.files.image;
+    let file = request.files.file;
     let image_url = await cloudinary.uploader.upload(file.tempFilePath, (err, result) => {
         if (err) {
             console.log(err.message)
         } else { console.log(result); }
     });
-    console.log(image_url);
     const post = await productModel({
         name: request.body.name,
         price: request.body.price,
