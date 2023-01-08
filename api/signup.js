@@ -18,7 +18,7 @@ signup.get("/signup", async(request, response) => {
 })
 
 //patch request
-signup.patch("/signup/:username", async(request, response) => {
+signup.patch("/reset/:username", async(request, response) => {
     let username = request.params.username;
     let plainPassword = request.body.password;
     let newPassword = await bcrypt.hash(plainPassword, 10, );
