@@ -18,7 +18,6 @@ const cart = mongoose.Schema({
     },
     userId: {
         type: String,
-        unique: true,
         default: null
     }
 });
