@@ -21,11 +21,23 @@ product.get("/product", async(request, response) => {
         response.status(500).send(err.message);
     }
 });
-//filter  get request
+//filter  get request by  product Categories:
 product.get("/product/:category", async(request, response) => {
     let category = request.params.category;
-    console.log("Category", category);
+
     const getProduct = await productModel.find({ category: category });
+    try {
+        response.status(200).send(getProduct);
+    } catch (err) {
+        response.status(500).send(err.message);
+    }
+});
+//filter  get request by product Id:
+product.get("/products/:id", async(request, response) => {
+    let id = request.params.id;
+    console.log("Category", id);
+    const getProduct = await productModel.find({ _id: id });
+    console.log("response", getProduct);
     try {
         response.status(200).send(getProduct);
     } catch (err) {
@@ -55,6 +67,7 @@ product.post("/product", async(request, response) => {
 })
 
 //connection
-const client = mongoose.connect("mongodb+srv://aditya:24EF1N9xtddYqOIv@cluster0.olyfynt.mongodb.net/?retryWrites=true&w=majority", { useNewUrlParser: true, useUnifiedTopology: true }).then(() => { console.log(`mongoose connection successfull!!`); }).catch((err) => { console.log(`mongoose connection error `); })
+const client = mongoose.connect("mongodb+srv://aditya:24EF1N9xtddYqOIv@cluster0.olyfynt.mongodb.net/?retryWrites=true&w=majority", { useNewUrlParser: true, useUnifiedTopology: true }).then(() => { console.log(`mongoose product connection successfull!!`); }).catch((err) => { console.log(`mongoose product connection error `); })
 
 module.exports = product;
+product

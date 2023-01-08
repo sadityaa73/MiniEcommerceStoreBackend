@@ -13,6 +13,18 @@ app.use(fileUpload({ useTempFiles: true }));
 const product = require("./api/product");
 
 app.use("/api/product", product);
+
+const cart = require("./api/cart");
+
+app.use("/api/cart", cart);
+
+const login = require('./api/signup');
+
+app.use('/api/signup', login);
+
+const userLogin = require("./api/login");
+
+app.use("/api/login", userLogin);
 app.listen(port, (err) => {
     if (!err) {
         console.log(`express connection successfull at port ${port}!!`);
