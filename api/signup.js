@@ -37,6 +37,7 @@ signup.post("/signup", async(request, response) => {
         firstname: request.body.firstname,
         lastname: request.body.lastname,
         mobile: request.body.mobile,
+        address: request.body.address,
         username: request.body.username,
         password: request.body.password
     });
