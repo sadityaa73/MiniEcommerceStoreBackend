@@ -19,6 +19,10 @@ const cart = mongoose.Schema({
     userId: {
         type: String,
         default: null
+    },
+    address: {
+        type: String,
+        default: null
     }
 });
 

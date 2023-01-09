@@ -43,7 +43,8 @@ cart.post("/cart", async(request, response) => {
         name: request.body.name,
         price: request.body.price,
         image: request.body.image,
-        userId: request.body.userId
+        userId: request.body.userId,
+        address: request.body.address
     });
     try {
         let data = cartItems.save();

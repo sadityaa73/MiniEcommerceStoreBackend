@@ -14,6 +14,7 @@ const product = express.Router();
 
 //get request
 product.get("/product", async(request, response) => {
+
     const getProduct = await productModel.find({});
     try {
         response.status(200).send(getProduct);
@@ -35,9 +36,7 @@ product.get("/product/:category", async(request, response) => {
 //filter  get request by product Id:
 product.get("/products/:id", async(request, response) => {
     let id = request.params.id;
-    console.log("Category", id);
     const getProduct = await productModel.find({ _id: id });
-    console.log("response", getProduct);
     try {
         response.status(200).send(getProduct);
     } catch (err) {
