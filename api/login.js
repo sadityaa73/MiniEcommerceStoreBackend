@@ -42,10 +42,14 @@ userlogin.post("/login", async(request, response) => {
                 if (result) {
                     console.log("login successfull", result);
                     login.save()
-                    response.status(201).send(login);
+                    response.status(201).send(result);
                 } else {
                     console.log("invalid password");
-                    return response.status(400).send("password is invalid");
+                    let invalid = {
+                        resultStatus: result,
+                        reason: "password is Invalid"
+                    }
+                    return response.status(401).send(invalid);
                 }
             });
         }

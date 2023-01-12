@@ -40,6 +40,10 @@ app.use('/api/signup', login);
 const userLogin = require("./api/login");
 
 app.use("/api/login", userLogin);
+
+const placeOrder = require("./api/placeOrder");
+
+app.use("/api/placeOrder", placeOrder);
 app.listen(port, (err) => {
     if (!err) {
         console.log(`express connection successfull at port ${port}!!`);
