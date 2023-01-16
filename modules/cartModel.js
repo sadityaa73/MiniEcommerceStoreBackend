@@ -16,6 +16,14 @@ const cart = mongoose.Schema({
         type: String,
         required: true
     },
+    productId: {
+        type: String,
+        required: true
+    },
+    quantity: {
+        type: Number,
+        default: null
+    },
     userId: {
         type: String,
         default: null
