@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
 mongoose.set('strictQuery', true);
 const signupModel = require('../modules/signupModel');
+const { response } = require('express');
 
 const signup = express.Router()
 
@@ -17,7 +18,17 @@ signup.get("/signup", async(request, response) => {
     }
 })
 
-//patch request
+//find user by username:
+signup.get("/get_user/:username", async(request, response) => {
+        let username = request.params.username;
+        const detail = await signupModel.findOne({ username: username });
+        try {
+            response.status(200).send(detail);
+        } catch (error) {
+            response.status(500).send(error.message);
+        }
+    })
+    //patch request
 signup.patch("/reset/:username", async(request, response) => {
     let username = request.params.username;
     let plainPassword = request.body.password;
@@ -26,6 +37,19 @@ signup.patch("/reset/:username", async(request, response) => {
     const userlogin = await signupModel.findOneAndUpdate(username, { password: newPassword });
     try {
         response.status(200).send(userlogin);
+    } catch (error) {
+        response.status(500).send(error.message);
+    }
+})
+
+//patch request for address change:
+signup.patch("/change_address/:username", async(request, response) => {
+    console.log(request.body, request.params);
+    let username = request.params.username;
+    let newAddress = request.body.address;
+    const data = await signupModel.findOneAndUpdate({ username: username }, { address: newAddress });
+    try {
+        response.status(200).send(data);
     } catch (error) {
         response.status(500).send(error.message);
     }
