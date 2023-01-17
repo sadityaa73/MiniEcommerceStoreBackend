@@ -55,6 +55,7 @@ cart.post("/cart", async(request, response) => {
     const cartItems = await cartModel({
         name: request.body.name,
         price: request.body.price,
+        fixedPrice: request.body.fixedPrice,
         image: request.body.image,
         productId: request.body.productId,
         quantity: request.body.quantity,

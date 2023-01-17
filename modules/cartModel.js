@@ -12,6 +12,10 @@ const cart = mongoose.Schema({
         type: Number,
         required: true
     },
+    fixedPrice: {
+        type: Number,
+        required: true
+    },
     image: {
         type: String,
         required: true
