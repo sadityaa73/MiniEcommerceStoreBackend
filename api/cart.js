@@ -17,7 +17,7 @@ cart.get("/cart", async(request, response) => {
     })
     //get cart item by product id:
 cart.post("/get_product", async(request, response) => {
-        console.log("prinitng request body", request.body);
+        console.log("prinitng request body", request.body.productId);
         let product_id = request.body.productId;
         const getItems = await cartModel.findOne({ productId: product_id });
         try {
