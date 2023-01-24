@@ -3,9 +3,9 @@ const productModel = require("../modules/productModule");
 const mongoose = require('mongoose');
 const cloudinary = require('cloudinary').v2;
 cloudinary.config({
-    cloud_name: 'dbjrcyxsc',
-    api_key: '536155681762353',
-    api_secret: 'p6rxH5zff9mC7uI7TW18svzeNKo',
+    cloud_name: process.env.CLOUD_NAME,
+    api_key: process.env.API_KEY,
+    api_secret: process.env.API_SECRET,
     secure: true
 });
 mongoose.set('strictQuery', true);
