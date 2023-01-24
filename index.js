@@ -2,12 +2,11 @@ const express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const fileUpload = require('express-fileupload');
-
+require('dotenv').config();
 
 const port = 4000;
 
 const app = express();
-
 
 app.use(bodyParser.json());
 app.use(cors());
@@ -33,6 +32,10 @@ app.use("/api/login", userLogin);
 const placeOrder = require("./api/placeOrder");
 
 app.use("/api/placeOrder", placeOrder);
+
+const payment = require("./api/payment");
+
+app.use("/api/payment", payment);
 app.listen(port, (err) => {
     if (!err) {
         console.log(`express connection successfull at port ${port}!!`);
