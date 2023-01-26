@@ -21,12 +21,10 @@ placeOrder.get("/placeOrder", async(request, response) => {
 placeOrder.post("/placeOrder", async(request, response) => {
 
     const postOrders = await placeOrderModel({
-        user_id: request.body.user_id,
-        cart_items: [{
-            name: request.body.cart_items.name,
-            price: request.body.cart_items.price
-        }],
-        user_address: request.body.user_address
+        image: request.body.image,
+        product: request.body.product,
+        quantity: request.body.quantity,
+        price: request.body.price
     });
     try {
         let post = await postOrders.save();

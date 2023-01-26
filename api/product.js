@@ -66,7 +66,7 @@ product.post("/product", async(request, response) => {
 })
 
 //connection
-const client = mongoose.connect("mongodb+srv://aditya:24EF1N9xtddYqOIv@cluster0.olyfynt.mongodb.net/?retryWrites=true&w=majority", { useNewUrlParser: true, useUnifiedTopology: true }).then(() => { console.log(`mongoose product connection successfull!!`); }).catch((err) => { console.log(`mongoose product connection error `); })
+const client = mongoose.connect("mongodb+srv://aditya:24EF1N9xtddYqOIv@cluster0.olyfynt.mongodb.net/?retryWrites=true&w=majority", { useNewUrlParser: true, useUnifiedTopology: true }).then(() => { console.log(`mongoose product connection successfull!!`); }).catch((err) => { console.log(`mongoose product connection error `, err.message); })
 
 module.exports = product;
 product

@@ -1,26 +1,24 @@
 const mongoose = require('mongoose');
 
-const cartSchema = new mongoose.Schema({
-    name: {
+
+const placeOrder = mongoose.Schema({
+    image: {
+        type: String,
+        required: true
+    },
+    product: {
+        type: String,
+        required: true
+    },
+    quantity: {
         type: String,
         required: true
     },
     price: {
-        type: Number,
-        required: true
-    },
-})
-
-const placeOrder = mongoose.Schema({
-    user_id: {
-        type: String,
-        required: true
-    },
-    cart_items: [cartSchema],
-    user_address: {
         type: String,
         required: true
     }
+
 });
 
 
