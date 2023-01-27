@@ -36,6 +36,11 @@ app.use("/api/placeOrder", placeOrder);
 const payment = require("./api/payment");
 
 app.use("/api/payment", payment);
+
+const search = require("./api/search");
+
+app.use("/api/search", search);
+
 app.listen(port, (err) => {
     if (!err) {
         console.log(`express connection successfull at port ${port}!!`);
