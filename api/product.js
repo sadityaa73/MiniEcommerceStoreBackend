@@ -33,10 +33,10 @@ product.get("/product/:category", async(request, response) => {
         response.status(500).send(err.message);
     }
 });
-//filter  get request by product Id:
-product.get("/products/:id", async(request, response) => {
-    let id = request.params.id;
-    const getProduct = await productModel.find({ _id: id });
+//filter  get request by product name:
+product.get("/products/:name", async(request, response) => {
+    let name = request.params.name;
+    const getProduct = await productModel.find({ name: name });
     try {
         response.status(200).send(getProduct);
     } catch (err) {
